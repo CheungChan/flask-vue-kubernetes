@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vue
@@ -6,6 +6,9 @@ metadata:
     name: vue
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: vue
   template:
     metadata:
       labels:
@@ -13,5 +16,5 @@ spec:
     spec:
       containers:
       - name: vue
-        image: mjhea0/vue-kubernetes:latest
+        image: harbor.azhangbaobao.cn/library/vue-kubernetes:latest
       restartPolicy: Always

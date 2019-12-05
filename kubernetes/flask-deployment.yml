@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flask
@@ -6,6 +6,9 @@ metadata:
     name: flask
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: flask
   template:
     metadata:
       labels:
@@ -13,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: mjhea0/flask-kubernetes:latest
+        image: harbor.azhangbaobao.cn/library/flask-kubernetes:latest
         env:
         - name: FLASK_ENV
           value: "development"

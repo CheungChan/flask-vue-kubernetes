@@ -92,8 +92,8 @@ $ kubectl exec postgres-<POD_IDENTIFIER> --stdin --tty -- createdb -U postgres b
 Build and push the image to Docker Hub:
 
 ```sh
-$ docker build -t mjhea0/flask-kubernetes ./services/server
-$ docker push mjhea0/flask-kubernetes
+$ docker build -t harbor.azhangbaobao.cn/library/flask-kubernetes ./services/server
+$ docker push harbor.azhangbaobao.cn/library/flask-kubernetes
 ```
 
 > Make sure to replace `mjhea0` with your Docker Hub namespace in the above commands as well as in *kubernetes/flask-deployment.yml*
@@ -129,9 +129,9 @@ $ kubectl apply -f ./kubernetes/minikube-ingress.yml
 
 Add entry to */etc/hosts* file:
 
-```
-<MINIKUBE_IP> hello.world
-```
+访问
+echo "$(minikube ip) flask.world" | sudo tee -a /etc/hosts
+浏览器访问ip
 
 Try it out:
 
@@ -144,9 +144,8 @@ Try it out:
 Build and push the image to Docker Hub:
 
 ```sh
-$ docker build -t mjhea0/vue-kubernetes ./services/client \
-    -f ./services/client/Dockerfile-minikube
-$ docker push mjhea0/vue-kubernetes
+$ docker build -t harbor.azhangbaobao.cn/library/vue-kubernetes ./services/client   -f ./services/client/Dockerfile-minikube
+$ docker push harbor.azhangbaobao.cn/library/vue-kubernetes
 ```
 
 > Again, replace `mjhea0` with your Docker Hub namespace in the above commands as well as in *kubernetes/vue-deployment.yml*
